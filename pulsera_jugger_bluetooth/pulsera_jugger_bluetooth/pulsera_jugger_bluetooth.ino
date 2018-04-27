@@ -27,8 +27,10 @@ void partido(std::string value) {
     // create more fonts at http://oleddisplay.squix.ch/
     std::string value2=value.substr(0, 1);
     std::string value3=value.substr(1, 1);
-    char msg[value2.length()+1];
-    char msg2[value3.length()+1];
+    std::string value4=value.substr(2, 2);
+    char equipo1[value2.length()+1];
+    char equipo2[value3.length()+1];
+    char piedras[value4.length()+1];
     strcpy(msg,value2.c_str()); 
     strcpy(msg2,value3.c_str()); 
     display.clear();
@@ -36,15 +38,15 @@ void partido(std::string value) {
     display.setFont(ArialMT_Plain_16);
     display.drawString(8, 0, "Piedras:");
     display.setFont(ArialMT_Plain_16);
-    display.drawString(100, 0, "00");
+    display.drawString(100, 0, piedras);
     display.setFont(ArialMT_Plain_16);
     display.drawString(8, 14, "Equipo1");
     display.setFont(ArialMT_Plain_16);
-    display.drawString(100, 14, msg);
+    display.drawString(100, 14, equipo1);
     display.setFont(ArialMT_Plain_16);
     display.drawString(8, 28, "Equipo 2:");
     display.setFont(ArialMT_Plain_16);
-    display.drawString(100, 28, msg2);
+    display.drawString(100, 28, equipo2);
     display.setFont(ArialMT_Plain_16);
     display.drawString(8, 42, "Faltas:");
     display.setFont(ArialMT_Plain_16);
@@ -85,6 +87,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
         Serial.print("New value: ");
         for (int i = 0; i < value.length(); i++)
           Serial.print(value[i]);
+
 
         Serial.println();
         Serial.println("*********");
