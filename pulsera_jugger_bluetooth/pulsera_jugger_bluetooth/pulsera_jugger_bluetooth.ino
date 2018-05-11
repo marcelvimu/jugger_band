@@ -31,8 +31,8 @@ void partido(std::string value) {
     char equipo1[value2.length()+1];
     char equipo2[value3.length()+1];
     char piedras[value4.length()+1];
-    strcpy(msg,value2.c_str()); 
-    strcpy(msg2,value3.c_str()); 
+   // strcpy(msg,value2.c_str()); 
+  //  strcpy(msg2,value3.c_str()); 
     display.clear();
     display.setTextAlignment(TEXT_ALIGN_LEFT);
     display.setFont(ArialMT_Plain_16);
@@ -54,7 +54,7 @@ void partido(std::string value) {
     display.display();
 }
 
- void logo() {//dibuja la imagen introducida
+ void logo() {//dibuja la imagen introducida (en este caso, el logo de la app movil)
     // see http://blog.squix.org/2015/05/esp8266-nodemcu-how-to-create-xbm.html
     // on how to create xbm files
     display.clear();
