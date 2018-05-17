@@ -25,12 +25,15 @@ int counter = 1;
 void partido(std::string value) {
     // Font Demo1
     // create more fonts at http://oleddisplay.squix.ch/
-    std::string value2=value.substr(0, 1);
-    std::string value3=value.substr(1, 1);
-    std::string value4=value.substr(2, 2);
+    std::string value1=value.substr(0, 1);
+    std::string value2=value.substr(1, 2);
+    std::string value3=value.substr(2, 2);
+    std::string value4=value.substr(3, 3);
+    char cuenta[value1.length()+1];
     char equipo1[value2.length()+1];
     char equipo2[value3.length()+1];
     char piedras[value4.length()+1];
+    
    // strcpy(msg,value2.c_str()); 
   //  strcpy(msg2,value3.c_str()); 
     display.clear();
@@ -52,6 +55,12 @@ void partido(std::string value) {
     display.setFont(ArialMT_Plain_16);
     display.drawString(100, 42, "00");
     display.display();
+    if ((int)cuenta == '1')
+    {
+     digitalWrite(16, HIGH);
+     delay(200);
+     digitalWrite(16, LOW);
+    }
 }
 
  void logo() {//dibuja la imagen introducida (en este caso, el logo de la app movil)
@@ -99,6 +108,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 };
 
 void setup() {
+  pinMode(16,OUTPUT);
   Serial.begin(115200);
 // Initialising the UI will init the display too.
   display.init();
@@ -124,7 +134,7 @@ void setup() {
                                        );
   pCharacteristic->setCallbacks(new MyCallbacks());
   
-  pCharacteristic->setValue("Hello World says Neil");
+  pCharacteristic->setValue("Conectado");
   pService->start();
   
   BLEAdvertising *pAdvertising = pServer->getAdvertising();
